@@ -1,0 +1,48 @@
+<form class="example-form" [formGroup]="myForm" *ngIf="isReady">
+	<table>
+		<tr>
+			<th>User</th>
+			<th>Age</th>
+			<th>
+         <button mat-icon-button color="accent" type="button" title="new item" (click)="addNewItem()">
+                <mat-icon>add</mat-icon>
+              </button>
+      </th>
+		</tr>
+		<tr formArrayName="items" *ngFor="let item of myForm.get('items').controls; let i = index;">
+			<ng-container [formGroupName]="i">
+				<td>
+					<mat-form-field class="example-full-width">
+						<input type="text" placeholder="Assignee" aria-label="Assignee" matInput formControlName = "product" [matAutocomplete]="auto">
+						<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+							<mat-option *ngFor="let option of filteredOptions[i] | async" [value]="option">
+								{{option.name}}
+							</mat-option>
+						</mat-autocomplete>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field>
+						<input matInput placeholder="Input" formControlName="price">
+					</mat-form-field>
+
+				</td>
+         <td class="mat-cell">
+                <button mat-icon-button color="primary" type="button" title="delete item" (click)="removeItem(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+           
+              </td>
+
+			</ng-container>
+		</tr>
+	</table>
+
+
+
+</form>
+
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
