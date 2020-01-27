@@ -62,8 +62,8 @@ export class AutocompleteDisplayExample implements OnInit {
   addNewItem() {
     const controls = <FormArray>this.myForm.controls['items'];
     let formGroup = this.fb.group({
-      name: ['', [Validators.required]],
-      age: ['', [Validators.required]],
+      product: ['', [Validators.required]],
+      price: ['', [Validators.required]],
     });
     controls.push(formGroup);
     // Build the account Auto Complete values
